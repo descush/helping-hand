@@ -1,0 +1,20 @@
+.headercontainer {
+    display: flex;
+    background-color: grey;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.options {
+    display: flex;
+    list-style-type: none;
+    padding: 10px;
+}
+
+li {
+    padding: 10px;
+}
+
+img {
+    width: 10%;
+}
