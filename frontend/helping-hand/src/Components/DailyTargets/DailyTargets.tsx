@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-// import cuppedHand from '../../Assets/cuppedHand.png';
-// import fist from '../../Assets/fist.png';
-// import palm from '../../Assets/palm.png';
-// import thumb from '../../Assets/thumb.png'
+import cuppedHand from '../../Assets/cuppedHand.png';
+import fist from '../../Assets/fist.png';
+import palm from '../../Assets/palm.png';
+import thumb from '../../Assets/thumb.png'
 
 
 export function DailyTargets() {
     return (
         <div>
-            {/* <img src={cuppedHand} alt=""></img>
+            <img src={cuppedHand} alt=""></img>
             <img src={fist} alt=""></img>
             <img src={palm} alt=""></img>
-            <img src={thumb} alt=""></img> */}
+            <img src={thumb} alt=""></img>
             <table>
                 <tr>
                     <th></th>
@@ -44,7 +44,7 @@ export function DailyTargets() {
                     <td>0 or 1</td>
                 </tr>
             </table>
-            <Link to={''}>Home</Link>
+            <Link to={'/'}>Home</Link>
         </div>
     )
 }

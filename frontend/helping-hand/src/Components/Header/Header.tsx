@@ -1,5 +1,5 @@
 import './Header.css'
-import optionswheelimg from './optionswheel.png'
+import gear from '../../Assets/gear.png'
 
 export function Header() {
     return (
@@ -8,7 +8,7 @@ export function Header() {
             <ul className='options'>
                 <li>User Info</li>
                 <li>Login</li>
-                <img src={optionswheelimg} alt="Options Wheel" />
+                <img src={gear} alt="Gear" />
             </ul>
 
         </div>
