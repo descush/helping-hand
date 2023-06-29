@@ -22,13 +22,15 @@ export function App() {
   const fetchEntries = async () => {
     try {
       const response = await axios.get<Entry[]>(
-        "http://localhost:3000/entries"
+        "http://127.0.0.1:5001/helping-hand-journal/us-central1/api/entries"
       );
       setEntries(response.data);
     } catch (error) {
       console.error("Error fetching entries:", error);
     }
   };
+
+  console.log(entries)
 
   return (
     <div className="App">
