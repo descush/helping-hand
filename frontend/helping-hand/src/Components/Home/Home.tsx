@@ -3,13 +3,14 @@ import { DailyTargets } from "../DailyTargets/DailyTargets";
 import Entry from "../../../../../backend/functions/src/models/Entry"
 import { Login } from "../Login/Login";
 import { FoodForm } from "../FoodForm";
+import { DailyEntriesViewer } from "../DailyEntriesViewer/DailyEntriesViewer";
 
 interface HomeProps {   // this defines the prop type for the 'Home' component
     entries: Entry[]; // Add entries prop
 
 }
 
-export function Home(props: HomeProps) {  // This is declaring the 'home' component that recieves the 'HomeProps' as its props
+export function Home(props: HomeProps, {entry: Entry} ) {  // This is declaring the 'home' component that recieves the 'HomeProps' as its props
     const { entries } = props;
 
     console.log("Entries prop:", entries); // Log entries prop
@@ -41,7 +42,11 @@ export function Home(props: HomeProps) {  // This is declaring the 'home' compon
                     <p>No entries found.</p>
                 )}
 
+            
+
             </div>
+
+            <DailyEntriesViewer entry={Entry} />
         </div>
     );
 }
