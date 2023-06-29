@@ -10,7 +10,7 @@ interface HomeProps {   // this defines the prop type for the 'Home' component
 
 }
 
-export function Home(props: HomeProps, {entry: Entry} ) {  // This is declaring the 'home' component that recieves the 'HomeProps' as its props
+export function Home(props: HomeProps ) {  // This is declaring the 'home' component that recieves the 'HomeProps' as its props
     const { entries } = props;
 
     console.log("Entries prop:", entries); // Log entries prop
@@ -45,8 +45,14 @@ export function Home(props: HomeProps, {entry: Entry} ) {  // This is declaring 
             
 
             </div>
-
-            <DailyEntriesViewer entry={Entry} />
+            <div>
+                {
+                    entries.map((entry) => (
+                        <DailyEntriesViewer entry={entry}></DailyEntriesViewer>
+                    ))
+                }
+            </div>
+            
         </div>
     );
 }
