@@ -8,6 +8,7 @@ import { DailyTargets } from "./Components/DailyTargets/DailyTargets";
 import { FoodForm } from "./Components/FoodForm";
 import { Login } from "./Components/Login/Login";
 import { FoodContextProvider } from "./Context/FoodContextProvider";
+import { Settings } from "./Components/Settings/Settings";
 
 export function App() {
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -42,6 +43,7 @@ export function App() {
           <Route path="/add-entry" element={<FoodForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/daily-targets" element={<DailyTargets />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </FoodContextProvider>
     </div>
