@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Header } from "./Components/Header/Header";
 import { Home } from "./Components/Home/Home";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { FoodForm } from "./Components/FoodForm";
 import { Login } from "./Components/Login/Login";
 import { FoodContextProvider } from "./Context/FoodContextProvider";
 import { Settings } from "./Components/Settings/Settings";
+import { DarkThemeContext } from "./Context/DarkThemeContext";
 
 export function App() {
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -33,21 +34,21 @@ export function App() {
 
   console.log(entries)
 
+  const { darkTheme } = useContext(DarkThemeContext);
+
   return (
-    <div className="App">
+    <div className={`App ${darkTheme ? 'dark' : 'light'}`}>
       {/* Render the Header component */}
       <Header />
 
-      <FoodContextProvider>
-        <Routes>
-          {/* Route for the Home component with entries prop */}
-          <Route path="/" element={<Home entries={entries} />} />
-          <Route path="/add-entry" element={<FoodForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/daily-targets" element={<DailyTargets />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </FoodContextProvider>
+      <Routes>
+        {/* Route for the Home component with entries prop */}
+        <Route path="/" element={<Home entries={[]} />} />
+        <Route path="/add-entry" element={<FoodForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/daily-targets" element={<DailyTargets />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
     </div>
   );
 }
