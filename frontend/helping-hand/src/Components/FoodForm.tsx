@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from 'react-router-dom';
 import FoodContext from "../Context/FoodContext";
 import { FoodEntry } from "../Interface/FoodEntry";
 import { getFood } from "../Services/FoodService";
@@ -100,6 +101,7 @@ export function FoodForm() {
             )}
             {/* Rest of the form inputs */}
             {/* ... */}
+            <Link to={'/'}>Home</Link>
         </div>
     );
 }

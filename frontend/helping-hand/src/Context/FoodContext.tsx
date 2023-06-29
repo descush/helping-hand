@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { FoodEntry } from "../Interface/FoodEntry";
 
+
 // Define the model for the FoodContext
 interface FoodContextModel {
     foodEntry: FoodEntry[]; // Array of FoodEntry objects
