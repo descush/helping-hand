@@ -43,8 +43,8 @@ export function App() {
 
       <Routes>
         {/* Route for the Home component with entries prop */}
-        <Route path="/" element={<Home entries={[]} />} />
-        <Route path="/add-entry" element={<FoodForm />} />
+        <Route path="/" element={<Home entries={entries} />} />
+        <Route path="/add-entry" element={<FoodContextProvider><FoodForm /></FoodContextProvider>} />
         <Route path="/login" element={<Login />} />
         <Route path="/daily-targets" element={<DailyTargets />} />
         <Route path="/settings" element={<Settings />} />
