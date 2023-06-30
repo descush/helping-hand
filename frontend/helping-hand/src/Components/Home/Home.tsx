@@ -17,8 +17,8 @@ export function Home(props: HomeProps) {  // This is declaring the 'home' compon
     return (
         <div>
             {/*  Renders links to the "Add Entry" and "Daily Targets" pages respectively. */}
-            <Link to="/add-entry">Add Entry</Link>
-            <Link to="/daily-targets">Daily Targets</Link>
+            <Link to="/add-entry"><button>Add Entry</button></Link>
+            <Link to="/daily-targets"><button>Daily Targets</button></Link>
             <div>
                 {/* Add entries rendering */}
                 {entries.length > 0 ? ( // rendering based on length 
