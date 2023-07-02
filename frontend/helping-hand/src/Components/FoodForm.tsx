@@ -102,7 +102,7 @@ export function FoodForm() {
             )}
             {/* Rest of the form inputs */}
             {/* ... */}
-            <Link to={'/'}>Home</Link>
+            <Link to={'/'}><button>Home</button></Link>
         </div>
     );
 }

@@ -10,6 +10,7 @@ import { Login } from "./Components/Login/Login";
 import { FoodContextProvider } from "./Context/FoodContextProvider";
 import { Settings } from "./Components/Settings/Settings";
 import { DarkThemeContext } from "./Context/DarkThemeContext";
+import { AboutAccordion } from "./Components/About/AboutAccordion";
 
 export function App() {
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -48,6 +49,7 @@ export function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/daily-targets" element={<DailyTargets />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<AboutAccordion />} />
       </Routes>
     </div>
   );
