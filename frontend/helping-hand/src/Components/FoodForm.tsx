@@ -11,6 +11,7 @@ export function FoodForm() {
     // State for form inputs
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [searchResults, setSearchResults] = useState<FoodEntry[]>([]);
+    const [showNutritionInfo, setShowNutritionInfo] = useState(false);
 
     // Form submission handler
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -67,11 +68,18 @@ export function FoodForm() {
                         {searchResults.map((food: FoodEntry) => (
                             <li key={food.fdcId}>
                                 <h3>{food.description}</h3>
-                                {food.foodNutrients?.map((nutrient) => (
-                                    <p key={nutrient.nutrientId}>
-                                        {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
-                                    </p>
-                                ))}
+                                <button onClick={() => setShowNutritionInfo(!showNutritionInfo)}>
+                                    Nutrition Info
+                                </button>
+                                {showNutritionInfo && (
+                                    <div>
+                                        {food.foodNutrients?.map((nutrient) => (
+                                            <p key={nutrient.nutrientId}>
+                                                {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
+                                            </p>
+                                        ))}
+                                    </div>
+                                )}
                                 <div>
                                     <label>Serving Amount:</label>
                                     <input
@@ -92,6 +100,8 @@ export function FoodForm() {
                                         <option value="Cupped Handfuls">Cupped Handfuls</option>
                                     </select>
                                 </div>
+
+
                                 <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
                             </li>
                         ))}
