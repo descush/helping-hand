@@ -12,7 +12,7 @@ export function Settings() {
                 click for {darkTheme ? "light theme" : "dark theme"}
             </button>
             <button onClick={signOut}>Sign Out</button>
-            <Link to={'/'}>Home</Link>
+            <Link to={'/'}><button>Home</button></Link>
         </div>
     )
 }

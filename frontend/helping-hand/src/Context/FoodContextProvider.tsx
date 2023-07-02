@@ -11,7 +11,7 @@ export function FoodContextProvider({ children }: Props) {
 
     // Function to add a new food entry to the state
     function addFood(food: FoodEntry) {
-        setFoodEntry((prevFoodEntry) => [...prevFoodEntry, food]);
+        setFoodEntry(prevFoodEntry => [...prevFoodEntry, food]);
     }
 
     return (

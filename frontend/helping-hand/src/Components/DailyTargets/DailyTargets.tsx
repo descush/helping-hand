@@ -44,7 +44,7 @@ export function DailyTargets() {
                     <td>0 or 1</td>
                 </tr>
             </table>
-            <Link to={'/'}>Home</Link>
+            <Link to={'/'}><button>Home</button></Link>
         </div>
     )
 }

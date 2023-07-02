@@ -34,6 +34,11 @@ export function Home(props: HomeProps ) {  // This is declaring the 'home' compo
            
             <div className="dailyentriesviewer">
                 {
+            <Link to="/add-entry"><button>Add Entry</button></Link>
+            <Link to="/daily-targets"><button>Daily Targets</button></Link>
+            <div>
+                {/* Add entries rendering */}
+                {entries.length > 0 ? ( // rendering based on length 
                     entries.map((entry) => (
                         <DailyEntriesViewer entry={entry}></DailyEntriesViewer>
                     ))
