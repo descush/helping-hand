@@ -3,6 +3,14 @@ export interface FoodEntry {
     description: string;
     servingAmount?: number;
     servingType?: string;
+    proteinAmount?: number;
+    proteinType?: string;
+    veggiesAmount?: number;
+    veggiesType?: string;
+    fatsAmount?: number;
+    fatsType?: string;
+    carbsAmount?: number;
+    carbsType?: string;
     foodNutrients?: {
         nutrientId: number;
         nutrientName: string;

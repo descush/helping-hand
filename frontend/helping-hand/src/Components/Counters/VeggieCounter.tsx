@@ -1,11 +1,17 @@
+import React from 'react';
 import Entry from '../../../../../backend/functions/src/models/Entry';
 import fist from '../../Assets/fist.png';
 
-export function VeggieCounter(props: {entry: Entry}) {
-    return(
-        <div>
-            <img src={fist} alt=""></img>
-            <h3>{props.entry.veggiesAmount}</h3>
-        </div>
-    )
+interface VeggieCounterProps {
+  entry: Entry;
+}
+
+export function VeggieCounter(props: VeggieCounterProps) {
+  return (
+    <div>
+      <img src={fist} alt="fist" />
+      <h3>{props.entry.veggiesAmount}</h3>
+      <p>{props.entry.veggiesType}</p>
+    </div>
+  );
 }

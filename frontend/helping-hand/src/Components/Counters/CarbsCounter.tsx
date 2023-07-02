@@ -1,11 +1,17 @@
+import React from 'react';
 import Entry from '../../../../../backend/functions/src/models/Entry';
 import cuppedHand from '../../Assets/cuppedHand.png';
 
-export function CarbsCounter(props: { entry: Entry}) {
-    return(
-        <div>
-             <img src={cuppedHand} alt=""></img>
-             <h3>{props.entry.carbsAmount}</h3>
-        </div>
-    )
+interface CarbsCounterProps {
+  entry: Entry;
+}
+
+export function CarbsCounter(props: CarbsCounterProps) {
+  return (
+    <div>
+      <img src={cuppedHand} alt="cupped hand" />
+      <h3>{props.entry.carbsAmount}</h3>
+      <p>{props.entry.carbsType}</p>
+    </div>
+  );
 }

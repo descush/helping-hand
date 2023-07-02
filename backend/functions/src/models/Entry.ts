@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 
 export default interface Entry {
     _id?: ObjectId;
+    fdcId?: number;
     proteinAmount: number;
     proteinType: string;
     veggiesAmount: number;
