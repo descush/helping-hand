@@ -14,6 +14,7 @@ export function FoodForm() {
     const [servingSize, setServingSize] = useState<{ [key: number]: number }>({});
     const [selectedEntries, setSelectedEntries] = useState<FoodEntry[]>([]);
     const [selectedDate, setSelectedDate] = useState<string>("");
+    const [showDetails, setShowDetails] = useState<{ [key: number]: boolean }>({});
 
     // Form submission handler
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -94,17 +95,24 @@ export function FoodForm() {
         setSelectedEntries([]); // Clear the selected entries
     }
 
+    // Function to toggle show details for a search result
+    function toggleShowDetails(fdcId: number) {
+        setShowDetails((prevShowDetails) => ({
+            ...prevShowDetails,
+            [fdcId]: !prevShowDetails[fdcId],
+        }));
+    }
+
     return (
         <div>
-            {/* Date input field */}
-            <label>Date:</label>
-            <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-            />
-
             <form onSubmit={onSubmit}>
+                <label>Date:</label>
+                <input
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                />
+
                 <input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -114,24 +122,6 @@ export function FoodForm() {
                 <button type="submit">Search</button>
             </form>
 
-            {/* Display selected entries */}
-            {selectedEntries.length > 0 && (
-                <div>
-                    <h2>Selected Entries</h2>
-                    <ul>
-                        {selectedEntries.map((entry, index) => (
-                            <li key={index}>
-                                <p>Food: {entry.description}</p>
-                                <p>Amount: {entry.servingAmount}</p>
-                            </li>
-                        ))}
-                    </ul>
-                    <button type="button" onClick={submitEntries}>
-                        Submit Entries
-                    </button>
-                </div>
-            )}
-
             {/* Display search results */}
             {searchResults.length > 0 ? (
                 <div>
@@ -140,32 +130,39 @@ export function FoodForm() {
                         {searchResults.map((food: FoodEntry) => (
                             <li key={food.fdcId}>
                                 <h3>{food.description}</h3>
-                                {food.foodNutrients?.map((nutrient) => (
-                                    <p key={nutrient.nutrientId}>
-                                        {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
-                                    </p>
-                                ))}
-                                <div>
-                                    <label>Serving Amount:</label>
-                                    <input
-                                        type="number"
-                                        value={servingSize[food.fdcId] || ""}
-                                        onChange={(e) =>
-                                            handleServingAmountChange(food, parseInt(e.target.value))
-                                        }
-                                    />
-                                    <label>Serving Type:</label>
-                                    <select
-                                        value={food.servingType}
-                                        onChange={(e) => handleServingTypeChange(food, e.target.value)}
-                                    >
-                                        <option value="Palm">Palm</option>
-                                        <option value="Fist">Fist</option>
-                                        <option value="Thumb">Thumb</option>
-                                        <option value="Cupped Handfuls">Cupped Handfuls</option>
-                                    </select>
-                                </div>
-                                <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
+                                <button onClick={() => toggleShowDetails(food.fdcId)}>
+                                    Show More Info
+                                </button>
+                                {showDetails[food.fdcId] && (
+                                    <div>
+                                        {food.foodNutrients?.map((nutrient) => (
+                                            <p key={nutrient.nutrientId}>
+                                                {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
+                                            </p>
+                                        ))}
+                                        <div>
+                                            <label>Serving Amount:</label>
+                                            <input
+                                                type="number"
+                                                value={servingSize[food.fdcId] || ''}
+                                                onChange={(e) =>
+                                                    handleServingAmountChange(food, parseInt(e.target.value))
+                                                }
+                                            />
+                                            <label>Serving Type:</label>
+                                            <select
+                                                value={food.servingType}
+                                                onChange={(e) => handleServingTypeChange(food, e.target.value)}
+                                            >
+                                                <option value="Palm">Palm</option>
+                                                <option value="Fist">Fist</option>
+                                                <option value="Thumb">Thumb</option>
+                                                <option value="Cupped Handfuls">Cupped Handfuls</option>
+                                            </select>
+                                        </div>
+                                        <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
+                                    </div>
+                                )}
                             </li>
                         ))}
                     </ul>
