@@ -34,11 +34,16 @@ export function FoodForm() {
     }
 
     // Function to add a selected food entry to the context
-    function addSelectedFood(selectedFood: FoodEntry) {
-        addEntry(selectedFood);
-        addFood(selectedFood);
-        setSearchResults([]); // Clear the search results after adding the selected food
+    async function addSelectedFood(selectedFood: FoodEntry) {
+        try {
+            await addEntry(selectedFood); // Wait for the addEntry function to complete
+            addFood(selectedFood);
+            setSearchResults([]); // Clear the search results after adding the selected food
+        } catch (error) {
+            console.error("Error adding food entry:", error);
+        }
     }
+
 
     // Function to handle serving amount change
     function handleServingAmountChange(food: FoodEntry, servingAmount: number) {

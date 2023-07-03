@@ -10,6 +10,10 @@ interface FoodContextModel {
     dailyVeggieSubmissions: Record<string, number>; // Daily veggie submissions
     dailyCarbSubmissions: Record<string, number>; // Daily carb submissions
     dailyFatSubmissions: Record<string, number>; // Daily fat submissions
+    setDailyProteinSubmissions: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+    setDailyVeggieSubmissions: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+    setDailyCarbSubmissions: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+    setDailyFatSubmissions: React.Dispatch<React.SetStateAction<Record<string, number>>>;
 }
 
 // Set the default values for the FoodContext
@@ -19,7 +23,11 @@ const defaultValues: FoodContextModel = {
     dailyProteinSubmissions: {},
     dailyVeggieSubmissions: {},
     dailyCarbSubmissions: {},
-    dailyFatSubmissions: {}
+    dailyFatSubmissions: {},
+    setDailyProteinSubmissions: () => { },
+    setDailyVeggieSubmissions: () => { },
+    setDailyCarbSubmissions: () => { },
+    setDailyFatSubmissions: () => { },
 }
 
 

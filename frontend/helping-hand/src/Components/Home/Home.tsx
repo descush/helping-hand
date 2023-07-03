@@ -1,14 +1,64 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import FoodContext from "../../Context/FoodContext";
 
 export function Home() {
     const {
+        foodEntry,
         dailyProteinSubmissions,
         dailyVeggieSubmissions,
         dailyCarbSubmissions,
-        dailyFatSubmissions
+        dailyFatSubmissions,
+        setDailyProteinSubmissions,
+        setDailyCarbSubmissions,
+        setDailyVeggieSubmissions,
+        setDailyFatSubmissions
     } = useContext(FoodContext);
+
+
+    const calculateDailySubmissions = () => {
+        const currentDate = new Date().toLocaleDateString();
+
+        // Reset the daily submissions counts
+        setDailyProteinSubmissions({});
+        setDailyVeggieSubmissions({});
+        setDailyCarbSubmissions({});
+        setDailyFatSubmissions({});
+
+        foodEntry.forEach((entry) => {
+            if (entry.timestamp) {
+                const entryDate = entry.timestamp.toLocaleDateString();
+
+                // Update the daily submissions counts for each category
+                if (entryDate === currentDate) {
+                    setDailyProteinSubmissions((prevSubmissions) => ({
+                        ...prevSubmissions,
+                        [entryDate]: (prevSubmissions[entryDate] || 0) + 1
+                    }));
+
+                    setDailyVeggieSubmissions((prevSubmissions) => ({
+                        ...prevSubmissions,
+                        [entryDate]: (prevSubmissions[entryDate] || 0) + 1
+                    }));
+
+                    setDailyCarbSubmissions((prevSubmissions) => ({
+                        ...prevSubmissions,
+                        [entryDate]: (prevSubmissions[entryDate] || 0) + 1
+                    }));
+
+                    setDailyFatSubmissions((prevSubmissions) => ({
+                        ...prevSubmissions,
+                        [entryDate]: (prevSubmissions[entryDate] || 0) + 1
+                    }));
+                }
+            }
+        });
+    };
+
+    useEffect(() => {
+        calculateDailySubmissions();
+        console.log('is working')
+    }, [foodEntry]);
 
     return (
         <div>
