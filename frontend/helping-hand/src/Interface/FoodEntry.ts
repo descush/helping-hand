@@ -1,6 +1,6 @@
 export interface FoodEntry {
     fdcId: number;
-    description: string;
+    description?: string;
     servingAmount?: number;
     servingType?: string;
     proteinAmount?: number;
