@@ -89,18 +89,24 @@ export function FoodForm() {
         }
     }
 
-    // Function to submit the selected entries
-    function submitEntries() {
-        selectedEntries.forEach((entry) => addEntry(entry));
-        setSelectedEntries([]); // Clear the selected entries
-    }
-
     // Function to toggle show details for a search result
-    function toggleShowDetails(fdcId: number) {
+    const toggleShowDetails = (fdcId: number) => {
         setShowDetails((prevShowDetails) => ({
             ...prevShowDetails,
             [fdcId]: !prevShowDetails[fdcId],
         }));
+    };
+
+    //function to submit selected entries
+    function submitEntries() {
+        selectedEntries.forEach((entry) => {
+            const entryWithDate = {
+                ...entry,
+                date: new Date(selectedDate),
+            };
+            addEntry(entryWithDate);
+        });
+        setSelectedEntries([]); // Clear the selected entries
     }
 
     return (
@@ -122,6 +128,24 @@ export function FoodForm() {
                 <button type="submit">Search</button>
             </form>
 
+            {/* Display selected entries */}
+            {selectedEntries.length > 0 && (
+                <div>
+                    <h2>Selected Entries</h2>
+                    <ul>
+                        {selectedEntries.map((entry, index) => (
+                            <li key={index}>
+                                <p>Food: {entry.description}</p>
+                                <p>Amount: {entry.servingAmount}</p>
+                            </li>
+                        ))}
+                    </ul>
+                    <button type="button" onClick={submitEntries}>
+                        Submit Entries
+                    </button>
+                </div>
+            )}
+
             {/* Display search results */}
             {searchResults.length > 0 ? (
                 <div>
@@ -130,21 +154,29 @@ export function FoodForm() {
                         {searchResults.map((food: FoodEntry) => (
                             <li key={food.fdcId}>
                                 <h3>{food.description}</h3>
-                                <button onClick={() => toggleShowDetails(food.fdcId)}>
-                                    Show More Info
-                                </button>
-                                {showDetails[food.fdcId] && (
-                                    <div>
-                                        {food.foodNutrients?.map((nutrient) => (
-                                            <p key={nutrient.nutrientId}>
-                                                {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
-                                            </p>
-                                        ))}
+                                {!showDetails[food.fdcId] ? (
+                                    <button onClick={() => toggleShowDetails(food.fdcId)}>
+                                        Show More Info
+                                    </button>
+                                ) : (
+                                    <>
+                                        <button onClick={() => toggleShowDetails(food.fdcId)}>
+                                            Hide Info
+                                        </button>
+                                        {showDetails[food.fdcId] && (
+                                            <>
+                                                {food.foodNutrients?.map((nutrient) => (
+                                                    <p key={nutrient.nutrientId}>
+                                                        {nutrient.nutrientName}: {nutrient.value} {nutrient.unitName}
+                                                    </p>
+                                                ))}
+                                            </>
+                                        )}
                                         <div>
                                             <label>Serving Amount:</label>
                                             <input
                                                 type="number"
-                                                value={servingSize[food.fdcId] || ''}
+                                                value={servingSize[food.fdcId] || ""}
                                                 onChange={(e) =>
                                                     handleServingAmountChange(food, parseInt(e.target.value))
                                                 }
@@ -159,9 +191,9 @@ export function FoodForm() {
                                                 <option value="Thumb">Thumb</option>
                                                 <option value="Cupped Handfuls">Cupped Handfuls</option>
                                             </select>
+                                            <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
                                         </div>
-                                        <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
-                                    </div>
+                                    </>
                                 )}
                             </li>
                         ))}
