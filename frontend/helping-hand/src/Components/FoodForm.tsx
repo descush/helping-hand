@@ -36,6 +36,7 @@ export function FoodForm() {
     // Function to add a selected food entry to the context
     function addSelectedFood(selectedFood: FoodEntry) {
         addEntry(selectedFood);
+        addFood(selectedFood);
         setSearchResults([]); // Clear the search results after adding the selected food
     }
 

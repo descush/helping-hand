@@ -1,4 +1,5 @@
 export interface FoodEntry {
+    timestamp: Date;
     fdcId: number;
     description: string;
     servingAmount?: number;

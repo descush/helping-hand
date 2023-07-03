@@ -44,7 +44,7 @@ export function App() {
 
       <Routes>
         {/* Route for the Home component with entries prop */}
-        <Route path="/" element={<Home entries={entries} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/add-entry" element={<FoodContextProvider><FoodForm /></FoodContextProvider>} />
         <Route path="/login" element={<Login />} />
         <Route path="/daily-targets" element={<DailyTargets />} />
@@ -56,3 +56,7 @@ export function App() {
 }
 
 export default App;
+function calculateDailySubmissions() {
+  throw new Error("Function not implemented.");
+}
+

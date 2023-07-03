@@ -1,7 +1,7 @@
 import express from "express";
 import Entry from "../models/Entry";
 import { ObjectId } from "mongodb";
-import { getClient } from "../db";
+import { getClient } from "../../db";
 
 export const entryRouter = express.Router();
 
