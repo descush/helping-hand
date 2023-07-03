@@ -172,7 +172,7 @@ export function FoodForm() {
                                                 ))}
                                             </>
                                         )}
-                                        <div>
+                                        {/* <div>
                                             <label>Serving Amount:</label>
                                             <input
                                                 type="number"
@@ -192,9 +192,30 @@ export function FoodForm() {
                                                 <option value="Cupped Handfuls">Cupped Handfuls</option>
                                             </select>
                                             <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
-                                        </div>
+                                        </div> */}
                                     </>
                                 )}
+                                <div>
+                                    <label>Serving Amount:</label>
+                                    <input
+                                        type="number"
+                                        value={servingSize[food.fdcId] || ""}
+                                        onChange={(e) =>
+                                            handleServingAmountChange(food, parseInt(e.target.value))
+                                        }
+                                    />
+                                    <label>Serving Type:</label>
+                                    <select
+                                        value={food.servingType}
+                                        onChange={(e) => handleServingTypeChange(food, e.target.value)}
+                                    >
+                                        <option value="Palm">Palm</option>
+                                        <option value="Fist">Fist</option>
+                                        <option value="Thumb">Thumb</option>
+                                        <option value="Cupped Handfuls">Cupped Handfuls</option>
+                                    </select>
+                                    <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
+                                </div>
                             </li>
                         ))}
                     </ul>
