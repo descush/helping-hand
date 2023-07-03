@@ -19,11 +19,11 @@ export function Home() {
     const calculateDailySubmissions = () => {
         const currentDate = new Date().toLocaleDateString();
 
-        // Reset the daily submissions counts
-        setDailyProteinSubmissions({});
-        setDailyVeggieSubmissions({});
-        setDailyCarbSubmissions({});
-        setDailyFatSubmissions({});
+        // // Reset the daily submissions counts
+        // setDailyProteinSubmissions({});
+        // setDailyVeggieSubmissions({});
+        // setDailyCarbSubmissions({});
+        // setDailyFatSubmissions({});
 
         foodEntry.forEach((entry) => {
             if (entry.timestamp) {
@@ -60,6 +60,7 @@ export function Home() {
         console.log('is working')
     }, [foodEntry]);
 
+    console.log(`carbs: ${dailyCarbSubmissions.toString()}`)
     return (
         <div>
             {/* Renders links to the "Add Entry" and "Daily Targets" pages respectively. */}
