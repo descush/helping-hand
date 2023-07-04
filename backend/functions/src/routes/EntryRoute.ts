@@ -6,7 +6,37 @@ import { getClient } from "../db";
 export const entryRouter = express.Router();
 
 //ENDPOINTS
-
+// Delete an entry
+entryRouter.delete('/entries/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        if (!ObjectId.isValid(id)) {
+            res.status(400).json({ message: 'Invalid entry ID' });
+            return;
+        }
+        const client = await getClient();
+        const result = await client.db().collection<Entry>('entries').deleteOne({ _id: new ObjectId(id) });
+        if (result.deletedCount === 0) {
+            res.status(404).json({ message: 'Entry not found' });
+        } else {
+            res.status(204).json(); // No content
+        }
+    } catch (err) {
+        console.error("ERROR", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+// Delete all entries
+entryRouter.delete('/entries', async (req, res) => {
+    try {
+        const client = await getClient();
+        await client.db().collection<Entry>('entries').deleteMany({});
+        res.status(204).json(); // No content
+    } catch (err) {
+        console.error("ERROR", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 // Get all entries
 entryRouter.get('/entries', async (req, res) => {
     try {
