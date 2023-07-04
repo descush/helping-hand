@@ -189,6 +189,7 @@ export function FoodForm() {
                                       value={food.servingType}
                                       onChange={(e) => handleServingTypeChange(food, e.target.value)}
                                   >
+                                    <option value="" disabled selected>Select a portion</option>
                                       <option value="Palm">Palm</option>
                                       <option value="Fist">Fist</option>
                                       <option value="Thumb">Thumb</option>

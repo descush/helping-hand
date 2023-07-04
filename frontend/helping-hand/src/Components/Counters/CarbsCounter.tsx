@@ -8,11 +8,17 @@ interface CarbsCounterProps {
 }
 
 export function CarbsCounter(props: CarbsCounterProps) {
+
+
+  const carbsTotal = props.entries.filter(e => e.carbsType).map(e => e.carbsAmount).reduce((acc, curr) => acc + curr, 0)
+  
+  console.log("carbstotal", carbsTotal)
+
   return (
     <div>
       <img src={cuppedHand} alt="cupped hand" />
-      <h3>{props.entry.carbsAmount}</h3>
-      <p>{props.entry.carbsType}</p>
+      <h3>Carbohydrates</h3>
+      <p>{carbsTotal}</p>
     </div>
   );
 }

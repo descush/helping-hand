@@ -8,11 +8,15 @@ interface FatsCounterProps {
 }
 
 export function FatsCounter(props: FatsCounterProps) {
+
+  const fatsTotal = props.entries.filter(e => e.fatsType).map(e => e.fatsAmount).reduce((acc, curr) => acc + curr, 0)
+
+
   return (
     <div>
       <img src={thumb} alt="thumb" />
-      <h3>{props.entry.fatsAmount}</h3>
-      <p>{props.entry.fatsType}</p>
+      <h3>Fats</h3>
+      <p>{fatsTotal}</p>
     </div>
   );
 }
