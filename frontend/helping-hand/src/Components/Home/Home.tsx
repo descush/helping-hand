@@ -1,5 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
-import { DailyTargets } from "../DailyTargets/DailyTargets";
+import { Link } from "react-router-dom";
 import Entry from "../../../../../backend/functions/src/models/Entry"
 import { Login } from "../Login/Login";
 import { FoodForm } from "../FoodForm";
@@ -36,7 +35,7 @@ export function Home(props: HomeProps) {
                 {/* Add entries rendering */}
                 {entries.length > 0 ? (
                     entries.map((entry) => (
-                        <DailyEntriesViewer entry={entry} />
+                        <DailyEntriesViewer entry={entry} entries={props.entries} />
                     ))
                 ) : (
                     <p>No entries available.</p>

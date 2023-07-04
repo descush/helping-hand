@@ -4,6 +4,7 @@ import cuppedHand from '../../Assets/cuppedHand.png';
 
 interface CarbsCounterProps {
   entry: Entry;
+  entries: Entry[];
 }
 
 export function CarbsCounter(props: CarbsCounterProps) {

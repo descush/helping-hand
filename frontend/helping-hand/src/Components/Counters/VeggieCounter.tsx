@@ -4,6 +4,7 @@ import fist from '../../Assets/fist.png';
 
 interface VeggieCounterProps {
   entry: Entry;
+  entries: Entry[];
 }
 
 export function VeggieCounter(props: VeggieCounterProps) {

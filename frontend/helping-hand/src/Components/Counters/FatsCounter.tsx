@@ -4,6 +4,7 @@ import thumb from '../../Assets/thumb.png';
 
 interface FatsCounterProps {
   entry: Entry;
+  entries: Entry[];
 }
 
 export function FatsCounter(props: FatsCounterProps) {

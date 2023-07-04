@@ -5,6 +5,7 @@ import { FoodEntry } from '../../Interface/FoodEntry';
 
 interface ProteinCounterProps {
   entry: Entry;
+  entries: Entry[];
 }
 
 export function ProteinCounter(props: ProteinCounterProps) {

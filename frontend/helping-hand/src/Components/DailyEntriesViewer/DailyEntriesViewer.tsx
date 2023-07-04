@@ -9,17 +9,18 @@ import Entry from "../../../../../backend/functions/src/models/Entry";
 
 interface DailyEntriesViewerProps {
   entry: FoodEntry;
+  entries: Entry[];
 }
 
-export function DailyEntriesViewer(props: {entry: Entry}) {
+export function DailyEntriesViewer(props: { entry: Entry, entries: Entry[] }) {
   const { entry } = props;
 
   return (
     <div>
-      <ProteinCounter entry={entry} />
-      <VeggieCounter entry={entry} />
-      <FatsCounter entry={entry} />
-      <CarbsCounter entry={entry} />
+      <ProteinCounter entry={entry} entries={props.entries} />
+      <VeggieCounter entry={entry} entries={props.entries} />
+      <FatsCounter entry={entry} entries={props.entries} />
+      <CarbsCounter entry={entry} entries={props.entries} />
       {/* <Link to={`/more-info/${entry.fdcId}`}>
         <button>More Info</button>
       </Link> */}
