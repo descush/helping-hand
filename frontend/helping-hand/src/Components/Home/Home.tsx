@@ -17,10 +17,19 @@ interface HomeProps {   // this defines the prop type for the 'Home' component
 export function Home(props: HomeProps) {
     const { entries } = props;
 
+    let dateSet = [...new Set(props.entries.map((item) => item.date))] as number[];
+    dateSet.sort((a, b) => b - a);
+    dateSet = dateSet.slice(0, 7);
 
-    let dateSet = [...new Set(props.entries.map((item) => item.date))];
-    let dateTotals: { date: any; carbsTotal: number; fatsTotal: number; proteinTotal: number; veggiesTotal: number; }[] = []
-    dateSet.forEach(d => {
+    let dateTotals: {
+        date: any;
+        carbsTotal: number;
+        fatsTotal: number;
+        proteinTotal: number;
+        veggiesTotal: number;
+    }[] = [];
+
+    dateSet.forEach((d) => {
         dateTotals.push({
             date: fromUnixTime(d / 1000).toLocaleDateString('en-US', {
                 timeZone: 'UTC',
@@ -28,14 +37,45 @@ export function Home(props: HomeProps) {
                 day: '2-digit',
                 year: 'numeric',
             }),
-            carbsTotal: props.entries.filter(e => e.date === d && e.carbsType).map(e => e.carbsAmount).reduce((acc, curr) => acc + curr, 0),
-            fatsTotal: props.entries.filter(e => e.date === d && e.fatsType).map(e => e.fatsAmount).reduce((acc, curr) => acc + curr, 0),
-            proteinTotal: props.entries.filter(e => e.date === d && e.proteinType).map(e => e.proteinAmount).reduce((acc, curr) => acc + curr, 0),
-            veggiesTotal: props.entries.filter(e => e.date === d && e.veggiesType).map(e => e.veggiesAmount).reduce((acc, curr) => acc + curr, 0),
-        })
-    })
+            carbsTotal: props.entries
+                .filter((e) => e.date === d && e.carbsType)
+                .map((e) => e.carbsAmount)
+                .reduce((acc, curr) => acc + curr, 0),
+            fatsTotal: props.entries
+                .filter((e) => e.date === d && e.fatsType)
+                .map((e) => e.fatsAmount)
+                .reduce((acc, curr) => acc + curr, 0),
+            proteinTotal: props.entries
+                .filter((e) => e.date === d && e.proteinType)
+                .map((e) => e.proteinAmount)
+                .reduce((acc, curr) => acc + curr, 0),
+            veggiesTotal: props.entries
+                .filter((e) => e.date === d && e.veggiesType)
+                .map((e) => e.veggiesAmount)
+                .reduce((acc, curr) => acc + curr, 0),
+        });
+    });
 
-    console.log(dateTotals)
+
+
+    // let dateSet = [...new Set(props.entries.map((item) => item.date))];
+    // let dateTotals: { date: any; carbsTotal: number; fatsTotal: number; proteinTotal: number; veggiesTotal: number; }[] = []
+    // dateSet.forEach(d => {
+    //     dateTotals.push({
+    //         date: fromUnixTime(d / 1000).toLocaleDateString('en-US', {
+    //             timeZone: 'UTC',
+    //             month: 'long',
+    //             day: '2-digit',
+    //             year: 'numeric',
+    //         }),
+    //         carbsTotal: props.entries.filter(e => e.date === d && e.carbsType).map(e => e.carbsAmount).reduce((acc, curr) => acc + curr, 0),
+    //         fatsTotal: props.entries.filter(e => e.date === d && e.fatsType).map(e => e.fatsAmount).reduce((acc, curr) => acc + curr, 0),
+    //         proteinTotal: props.entries.filter(e => e.date === d && e.proteinType).map(e => e.proteinAmount).reduce((acc, curr) => acc + curr, 0),
+    //         veggiesTotal: props.entries.filter(e => e.date === d && e.veggiesType).map(e => e.veggiesAmount).reduce((acc, curr) => acc + curr, 0),
+    //     })
+    // })
+
+    // console.log(dateTotals)
 
     return (
         <div className='bgLayer'>
