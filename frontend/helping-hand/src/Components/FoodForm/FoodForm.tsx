@@ -1,9 +1,9 @@
 import React, { FormEvent, useContext, useState } from "react";
 import { Link } from 'react-router-dom';
-import FoodContext from "../Context/FoodContext";
-import { FoodEntry } from "../Interface/FoodEntry";
-import { getFood } from "../Services/FoodService";
-import { addEntry } from "../Services/FoodService";
+import FoodContext from "../../Context/FoodContext";
+import { FoodEntry } from "../../Interface/FoodEntry";
+import { getFood } from "../../Services/FoodService";
+import { addEntry } from "../../Services/FoodService";
 export function FoodForm() {
     const { addFood } = useContext(FoodContext);
 

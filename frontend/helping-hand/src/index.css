@@ -4,6 +4,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  margin: 0;
 }
 
 .App {
@@ -15,13 +16,25 @@ body {
   color: #fbfdff;
 }
 
+.Header.dark {
+  background-color: #4D4D4D;
+}
+
 .App.light {
   background-color: #fbfdff;
   color: #212121;
 }
 
+.Header.light {
+  background-color: #CFCFCF;
+}
+
 * {
   box-sizing: border-box;
+}
+
+img {
+  width: 10%;
 }
 
 /* BUTTON STYLES */
@@ -32,6 +45,9 @@ button {
   z-index: 1;
   font-size: 1rem;
   padding: 1px 20px 1px 20px;
+  background-color: #666666;
+  border: none;
+
 }
 
 button:hover {
@@ -48,6 +64,6 @@ button:hover {
 
 @media only screen and (min-width: 992px) {
   button {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }

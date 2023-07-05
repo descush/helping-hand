@@ -1,0 +1,45 @@
+.dailyDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dateDisplay {
+    margin-bottom: 10px;
+}
+
+.allInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.infoDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.roundText {}
+
+.circle {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    button {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    button {
+        font-size: 2rem;
+    }
+}

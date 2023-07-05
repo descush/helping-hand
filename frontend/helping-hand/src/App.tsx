@@ -5,7 +5,7 @@ import axios from "axios";
 import Entry from "../../../backend/functions/src/models/Entry";
 import { Route, Routes } from "react-router-dom";
 import { DailyTargets } from "./Components/DailyTargets/DailyTargets";
-import { FoodForm } from "./Components/FoodForm";
+import { FoodForm } from "./Components/FoodForm/FoodForm";
 import { Login } from "./Components/Login/Login";
 import { FoodContextProvider } from "./Context/FoodContextProvider";
 import { Settings } from "./Components/Settings/Settings";
