@@ -41,7 +41,8 @@ entryRouter.delete('/entries', async (req, res) => {
 entryRouter.get('/entries', async (req, res) => {
     try {
         const client = await getClient();
-        const results = await client.db().collection<Entry>('entries').find().toArray();
+        const results = await client.db().collection<Entry>('entries').find().toArray()
+        console.log(results)
         res.status(200).json(results);
     } catch (err) {
         console.error("ERROR", err);

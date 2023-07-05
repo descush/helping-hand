@@ -11,5 +11,5 @@ export default interface Entry {
     fatsType: string;
     carbsAmount: number;
     carbsType: string;
-    date: Date;
+    date: number | any;
 }

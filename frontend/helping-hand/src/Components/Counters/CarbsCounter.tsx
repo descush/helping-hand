@@ -11,7 +11,7 @@ export function CarbsCounter(props: CarbsCounterProps) {
 
 
   const carbsTotal = props.entries.filter(e => e.carbsType).map(e => e.carbsAmount).reduce((acc, curr) => acc + curr, 0)
-  
+
   console.log("carbstotal", carbsTotal)
 
   return (
