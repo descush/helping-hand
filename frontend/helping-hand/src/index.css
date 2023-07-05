@@ -13,6 +13,9 @@ body {
 
 .App.dark {
   background-color: #212121;
+  background-image: url('../src/Assets/dark-bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fbfdff;
 }
 
@@ -22,6 +25,9 @@ body {
 
 .App.light {
   background-color: #fbfdff;
+  background-image: url('../src/Assets/light-bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #212121;
 }
 
@@ -54,6 +60,11 @@ button:hover {
   border: 2px solid #84a46a;
   color: #84a46a;
   background-color: transparent;
+}
+
+button.signInButton {
+  background-color: transparent;
+  border: none;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

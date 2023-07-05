@@ -14,9 +14,9 @@ export function Header() {
         <div className={`Header ${darkTheme ? 'dark' : 'light'}`}>
             <h1>Helping Hand</h1>
             <ul className='options'>
-                <button onClick={signInWithGoogle}>Login</button>
-                <Link to="/about"><button>About</button></Link>
-                <Link to="/settings"><img className='gear' src={gear} alt="Gear" /></Link>
+                <button className='navLink signInButton' onClick={signInWithGoogle}>Login</button>
+                <Link className='navLink' to="/about">About</Link>
+                <Link to="/settings" className='navLink'>Settings<img className='gear' src={gear} alt="Gear" /></Link>
             </ul>
 
         </div>

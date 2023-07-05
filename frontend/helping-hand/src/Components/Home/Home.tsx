@@ -5,7 +5,8 @@ import cuppedHand from '../../Assets/cuppedHand.png';
 import thumb from '../../Assets/thumb.png';
 import palm from '../../Assets/palm.png';
 import fromUnixTime from 'date-fns/fromUnixTime'
-import './Home.css'
+import './Home.css';
+// import CircleType from 'circletype';
 
 
 
@@ -37,10 +38,12 @@ export function Home(props: HomeProps) {
     console.log(dateTotals)
 
     return (
-        <div>
+        <div className='bgLayer'>
             {/* Renders links to the "Add Entry" and "Daily Targets" pages respectively. */}
-            <Link to="/add-entry"><button>Add Entry</button></Link>
-            <Link to="/daily-targets"><button>Daily Targets</button></Link>
+            <div className='buttonDiv'>
+                <Link to="/add-entry"><button>Add Entry</button></Link>
+                <Link to="/daily-targets"><button>Daily Targets</button></Link>
+            </div>
             <div>
                 {
                     dateTotals.map(day => (
@@ -48,21 +51,21 @@ export function Home(props: HomeProps) {
                             <div className='dateDisplay'><h2>{day.date}</h2></div>
                             <div className='allInfo'>
                                 <div className="infoDisplay">
-                                    <h3 className='roundText'>Protein</h3>
                                     <div className='circle'><p>{day.proteinTotal}</p></div>
+                                    <h3 className='roundText'>Protein</h3>
                                 </div>
                                 <div className="infoDisplay">
-                                    <h3 className='roundText'>Vegetables</h3>
                                     <div className='circle'><p>{day.veggiesTotal}</p></div>
+                                    <h3 className='roundText'>Vegetables</h3>
                                 </div>
                                 <div className="infoDisplay">
-                                    <h3 className='roundText'>Carbohydrates</h3>
                                     <div className='circle'><p>{day.carbsTotal}</p></div>
+                                    <h3 className='roundText'>Carbohydrates</h3>
                                 </div>
 
                                 <div className="infoDisplay">
-                                    <h3 className='roundText'>Fats</h3>
                                     <div className='circle'><p>{day.fatsTotal}</p></div>
+                                    <h3 className='roundText'>Fats</h3>
                                 </div>
                             </div>
                         </div>

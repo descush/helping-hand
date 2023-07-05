@@ -11,6 +11,8 @@ import { FoodContextProvider } from "./Context/FoodContextProvider";
 import { Settings } from "./Components/Settings/Settings";
 import { DarkThemeContext } from "./Context/DarkThemeContext";
 import { AboutAccordion } from "./Components/About/AboutAccordion";
+import darkBg from '../src/Assets/dark-bg.svg';
+// import lightBg from '../assets/light-bg.jpg';
 
 export function App() {
   const [entries, setEntries] = useState<Entry[]>([]);
