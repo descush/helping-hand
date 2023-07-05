@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Header } from "./Components/Header/Header";
 import { Home } from "./Components/Home/Home";
 import axios from "axios";
 import Entry from "../../../backend/functions/src/models/Entry";
 import { Route, Routes } from "react-router-dom";
-import { DailyTargets } from "./Components/DailyTargets/DailyTargets";
 import { FoodForm } from "./Components/FoodForm/FoodForm";
 import { Login } from "./Components/Login/Login";
-import { FoodContextProvider } from "./Context/FoodContextProvider";
 import { Settings } from "./Components/Settings/Settings";
 import { DarkThemeContext } from "./Context/DarkThemeContext";
 import { AboutAccordion } from "./Components/About/AboutAccordion";
-import darkBg from '../src/Assets/dark-bg.svg';
-// import lightBg from '../assets/light-bg.jpg';
 
 export function App() {
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -49,7 +45,6 @@ export function App() {
         <Route path="/" element={<Home entries={entries} />} />
         <Route path="/add-entry" element={<FoodForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/daily-targets" element={<DailyTargets />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<AboutAccordion />} />
       </Routes>

@@ -4,6 +4,7 @@ import FoodContext from "../../Context/FoodContext";
 import { FoodEntry } from "../../Interface/FoodEntry";
 import { getFood } from "../../Services/FoodService";
 import { addEntry } from "../../Services/FoodService";
+import '../../index.css'
 export function FoodForm() {
     const { addFood } = useContext(FoodContext);
 
@@ -113,7 +114,7 @@ export function FoodForm() {
     }
 
     return (
-        <div>
+        <div className='formDiv'>
             <form onSubmit={onSubmit}>
                 <label>Date:</label>
                 <input

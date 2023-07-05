@@ -1,8 +1,8 @@
 import './Header.css'
-import gear from '../../Assets/gear.png'
-import { signInWithGoogle, signOut } from '../../firebaseConfig'
+import logo from '../../Assets/logo.png'
+import { signInWithGoogle } from '../../firebaseConfig'
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { DarkThemeContext } from '../../Context/DarkThemeContext';
 
 
@@ -12,13 +12,20 @@ export function Header() {
 
     return (
         <div className={`Header ${darkTheme ? 'dark' : 'light'}`}>
-            <h1>Helping Hand</h1>
-            <ul className='options'>
-                <button className='navLink signInButton' onClick={signInWithGoogle}>Login</button>
-                <Link className='navLink' to="/about">About</Link>
-                <Link to="/settings" className='navLink'>Settings<img className='gear' src={gear} alt="Gear" /></Link>
-            </ul>
-
+            <img className="logo" src={logo} alt="logo"></img>
+            <div className='options'>
+                <ul className='headerUl'>
+                    <li className='headerLi'>
+                        <button className='navLink removeButtonStyles' onClick={signInWithGoogle}>Login</button>
+                    </li>
+                    <li className='headerLi'>
+                        <Link to="/about" className='navLink'><button className='navLink removeButtonStyles'>About</button></Link>
+                    </li>
+                    <li className='headerLi'>
+                        <Link to="/settings" className='navLink'><button className='navLink removeButtonStyles'>Settings</button></Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

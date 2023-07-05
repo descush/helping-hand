@@ -1,7 +1,12 @@
 .Header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 10px 15px;
+}
+
+.logo {
+    margin: 16px;
 }
 
 .options {
@@ -11,25 +16,30 @@
     width: 30%;
 }
 
-.options {
+.options ul {
     display: flex;
+    align-items: center;
     list-style-type: none;
     padding: 10px;
 }
 
+.headerLi {
+    list-style: none;
+    padding: 10px;
+}
+
 .navLink {
-    font-weight: 300;
-    font-size: 100%;
     text-decoration: none;
     border-bottom: none;
     color: currentColor;
+    background-color: transparent !important;
+    border: none;
+    padding: 0;
 }
 
 .navLink:hover {
     color: #84a46a;
+    border: none;
+    border-bottom: 2px solid #84a46a;
     background-color: transparent;
-}
-
-.gear {
-    width: 15%;
 }

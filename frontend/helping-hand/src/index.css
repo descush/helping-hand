@@ -1,9 +1,12 @@
 /* orange accent: #ffa970 */
 /* green accent: #84a46a */
 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;600;700&display=swap');
+
 body {
   width: 100vw;
   height: 100vh;
+  font-family: 'Mulish', sans-serif;
   margin: 0;
 }
 
@@ -53,18 +56,12 @@ button {
   padding: 1px 20px 1px 20px;
   background-color: #666666;
   border: none;
-
 }
 
 button:hover {
   border: 2px solid #84a46a;
   color: #84a46a;
   background-color: transparent;
-}
-
-button.signInButton {
-  background-color: transparent;
-  border: none;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

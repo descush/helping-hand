@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { signOut } from "../../firebaseConfig";
 import { useContext } from "react";
 import { DarkThemeContext } from "../../Context/DarkThemeContext";
-import '../../index.css';
+import './Settings.css';
 
 export function Settings() {
     const { darkTheme, toggleDarkTheme } = useContext(DarkThemeContext)
