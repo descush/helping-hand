@@ -12,22 +12,22 @@ A web app created by [Desiree](https://github.com/descush), [Justin](https://git
 
 Helping Hand is mobile friendly food journaling application written in ReactJS that helps you plan your food portions by using your hand as a guideline.
 
-![Helping Hand App](../helping-hand/src/Assets/appimg.png)
+![Helping Hand App](/helping-hand/frontend/helping-hand/src/Assets/appimg.png)
 ## Features
 
 - Allows a user to input a food item of their choosing and submit to a list of entries. Users can choose whether the food item is a serving of...
 
 
     "Protein"
-    <img src="../helping-hand/src/Assets/palm.png" height="60" width="60" >
+    <img src="frontend/helping-hand/src/Assets/palm.png" height="60" width="60" >
      
     "Carbohydrate"
-    <img src="../helping-hand/src/Assets/cuppedHand.png" height="60" width="60" >
+    <img src="frontend/helping-hand/src/Assets/cuppedHand.png" height="60" width="60" >
 
     "Vegetable"
-    <img src="../helping-hand/src/Assets/fist.png" height="60" width="60" >
+    <img src="frontend/helping-hand/src/Assets/fist.png" height="60" width="60" >
 
     "Fat"
-    <img src="../helping-hand/src/Assets/thumb.png" height="60" width="60" >
+    <img src="frontend/helping-hand/src/Assets/thumb.png" height="60" width="60" >
 
 - The home page provides a full tally of all the entries made by the user sorted by date and macronutrient type.
