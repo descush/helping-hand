@@ -112,22 +112,6 @@ export function Home(props: HomeProps) {
                         <img src={fist} alt=""></img>
                         <img src={cuppedHand} alt=""></img>
                         <img src={thumb} alt=""></img>
-                        {/* <div>
-                            <img src={palm} alt=""></img>
-                            <h3>Protein</h3>
-                        </div>
-                        <div>
-                            <img src={fist} alt=""></img>
-                            <h3>Veggies</h3>
-                        </div>
-                        <div>
-                            <img src={cuppedHand} alt=""></img>
-                            <h3>Carbs</h3>
-                        </div>
-                        <div>
-                            <img src={thumb} alt=""></img>
-                            <h3>Fats</h3> */}
-                        {/* </div> */}
                     </div>
                     <table className='styled-table'>
                         <thead>
