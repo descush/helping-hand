@@ -45,8 +45,8 @@ export function AboutAccordion() {
         <div className="container">
             <h2>About Helping Hand</h2>
             <AccordionItem items={items} />
-            <button onClick={handleButtonClick}>Learn More Here</button>
-            <Link to={'/'}><button>Home</button></Link>
+            <button className='abtBtn' onClick={handleButtonClick}>Learn More Here</button>
+            <Link className='abtBtn' to={'/'}><button>Home</button></Link>
         </div>
     );
 }

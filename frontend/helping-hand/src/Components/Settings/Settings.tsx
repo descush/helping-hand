@@ -7,12 +7,12 @@ import './Settings.css';
 export function Settings() {
     const { darkTheme, toggleDarkTheme } = useContext(DarkThemeContext)
     return (
-        <div>
-            <button onClick={toggleDarkTheme}>
+        <div className='settingsDiv'>
+            <button className='settingBtn topBtn' onClick={toggleDarkTheme}>
                 click for {darkTheme ? "light theme" : "dark theme"}
             </button>
-            <button onClick={signOut}>Sign Out</button>
-            <Link to={'/'}><button>Home</button></Link>
+            <button className='settingBtn' onClick={signOut}>Sign Out</button>
+            <Link className='settingBtn' to={'/'}><button>Home</button></Link>
         </div>
     )
 }
