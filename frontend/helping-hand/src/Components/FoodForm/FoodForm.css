@@ -10,3 +10,9 @@
 li {
     list-style: none;
 }
+
+input {
+    margin: 16px;
+    width: 130px;
+    height: 35px;
+}

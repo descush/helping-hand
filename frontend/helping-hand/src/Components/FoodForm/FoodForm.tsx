@@ -117,6 +117,7 @@ export function FoodForm() {
 
     return (
         <div className='formDiv'>
+            <Link to={'/'}><button>Home</button></Link>
             <form onSubmit={onSubmit}>
                 <label>Date:</label>
                 <input
@@ -212,7 +213,6 @@ export function FoodForm() {
 
             {/* Rest of the form inputs */}
             {/* ... */}
-            <Link to={'/'}><button>Home</button></Link>
         </div>
     );
 }
