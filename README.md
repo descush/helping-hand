@@ -31,3 +31,9 @@ Helping Hand is mobile friendly food journaling application written in ReactJS t
     <img src="frontend/helping-hand/src/Assets/thumb.png" height="60" width="60" >
 
 - The home page provides a full tally of all the entries made by the user sorted by date and macronutrient type.
+
+- Dark mode provides an accessibility option for those with sensitive eyes.
+
+### Technologies used
+
+Helping Hand is accessed through the use of a web-browser and is firebase compatible for easy authentication and login. The app is written with JavaScript using the React framework with JSX. Date FNS is used for entry sorting by date.
