@@ -14,7 +14,7 @@ Helping Hand is a mobile friendly food journaling application written in ReactJS
 
 ## Helping Hand App
 
-<img src="frontend/helping-hand/src/Assets/appimg.png">
+<img src="frontend/helping-hand/src/Assets/appimg2.png">
 
 ### Features
 
