@@ -4,7 +4,9 @@ import FoodContext from "../../Context/FoodContext";
 import { FoodEntry } from "../../Interface/FoodEntry";
 import { getFood } from "../../Services/FoodService";
 import { addEntry } from "../../Services/FoodService";
-import '../../index.css'
+// import '../../index.css'
+import './FoodForm.css';
+
 export function FoodForm() {
     const { addFood } = useContext(FoodContext);
 
