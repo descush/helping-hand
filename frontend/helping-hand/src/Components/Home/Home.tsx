@@ -50,7 +50,7 @@ export function Home(props: HomeProps) {
 
             <div className="veggiesicons">
                     <img src={fist} alt="fist" />
-                    <h3>Vegatables</h3>
+                    <h3>Vegetables</h3>
                     <p>{veggiesTotal}</p>
                 </div>
                 <div className="carbsicons">
