@@ -49,7 +49,7 @@ button {
   position: relative;
   border-radius: 2px;
   z-index: 1;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding: 1px 20px 1px 20px;
   background-color: #666666;
   border: none;
@@ -75,6 +75,6 @@ button.signInButton {
 
 @media only screen and (min-width: 992px) {
   button {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
