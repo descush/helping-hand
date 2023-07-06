@@ -4,8 +4,8 @@ import FoodContext from "../../Context/FoodContext";
 import { FoodEntry } from "../../Interface/FoodEntry";
 import { getFood } from "../../Services/FoodService";
 import { addEntry } from "../../Services/FoodService";
-// import '../../index.css'
 import './FoodForm.css';
+
 
 export function FoodForm() {
     const { addFood } = useContext(FoodContext);
@@ -90,7 +90,7 @@ export function FoodForm() {
                 break;
         }
 
-        // addSelectedFood(updatedFood); // Add the updated food to selectedEntries
+        addSelectedFood(updatedFood); // Add the updated food to selectedEntries
     }
 
     // Function to toggle show details for a search result
@@ -100,23 +100,6 @@ export function FoodForm() {
             [fdcId]: !prevShowDetails[fdcId],
         }));
     };
-
-    // Function to handle adding the selected food to entries
-    function handleAddToEntries(selectedFood: FoodEntry) {
-        const foodWithServingSize = {
-            ...selectedFood,
-            servingAmount: servingSize[selectedFood.fdcId] || 0,
-        };
-        setSelectedEntries((prevEntries) => [...prevEntries, foodWithServingSize]);
-        setSearchResults([]); // Clear the search results after adding the selected food
-
-        // Reset serving size and search query
-        setServingSize((prevServingSize) => ({
-            ...prevServingSize,
-            [selectedFood.fdcId]: 0,
-        }));
-        setSearchQuery("");
-    }
 
     // Function to submit selected entries
     function submitEntries() {
@@ -132,18 +115,8 @@ export function FoodForm() {
         setSelectedEntries([]); // Clear the selected entries
     }
 
-    // Function to delete a selected entry
-    function handleDeleteEntry(index: number) {
-        setSelectedEntries((prevEntries) => {
-            const updatedEntries = [...prevEntries];
-            updatedEntries.splice(index, 1);
-            return updatedEntries;
-        });
-    }
-
     return (
-        <div className='formDiv'>
-            <Link to={'/'}><button>Home</button></Link>
+        <div>
             <form onSubmit={onSubmit}>
                 <label>Date:</label>
                 <input
@@ -170,7 +143,6 @@ export function FoodForm() {
                             <li key={index}>
                                 <p>Food: {entry.description}</p>
                                 <p>Amount: {entry.servingAmount}</p>
-                                <button onClick={() => handleDeleteEntry(index)}>Delete</button>
                             </li>
                         ))}
                     </ul>
@@ -228,7 +200,7 @@ export function FoodForm() {
                                         <option value="Thumb">Thumb</option>
                                         <option value="Cupped Handfuls">Cupped Handfuls</option>
                                     </select>
-                                    <button onClick={() => handleAddToEntries(food)}>Add to Entries</button>
+                                    <button onClick={() => addSelectedFood(food)}>Add to Entries</button>
                                 </div>
                             </li>
                         ))}
@@ -240,6 +212,7 @@ export function FoodForm() {
 
             {/* Rest of the form inputs */}
             {/* ... */}
+            <Link to={'/'}><button>Home</button></Link>
         </div>
     );
 }
