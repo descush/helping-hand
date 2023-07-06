@@ -23,7 +23,8 @@ export function App() {
   const fetchEntries = async () => {
     try {
       const response = await axios.get<Entry[]>(
-        "http://127.0.0.1:5001/helping-hand-journal/us-central1/api/entries"
+        // "http://127.0.0.1:5001/helping-hand-journal/us-central1/api/entries"
+        "https://us-central1-helping-hand-journal.cloudfunctions.net/api/entries"
       );
       setEntries(response.data);
     } catch (error) {
