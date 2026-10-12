@@ -2,7 +2,10 @@
 
 **Nutrition tracking without the scale.** Helping Hand tracks meals in hand-sized portions: a palm of protein, a fist of veggies, a cupped hand of carbs, a thumb of fat. It's the method nutrition coaches use because it's fast, needs no equipment, and is nearly as accurate as weighing food.
 
-**[Live demo →](https://helping-hand-journal.web.app/?demo)**: opens with two weeks of sample data, no sign-in needed.
+**[Live demo →](https://YOUR-SITE.netlify.app/?demo)**: opens with two weeks of sample data, no sign-in needed.
+<!-- TODO(Justin): replace YOUR-SITE with the Netlify site name after the first deploy -->
+
+
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
@@ -39,7 +42,7 @@ Lighthouse (mobile, production build): **Accessibility 100 · Best Practices 100
 | **Frontend** | React 18, TypeScript, React Router 6, hand-written CSS with design tokens (no UI framework) |
 | **Auth & data** | Firebase Authentication (Google), Cloud Firestore |
 | **Food data** | [USDA FoodData Central API](https://fdc.nal.usda.gov/api-guide.html) |
-| **Hosting** | Firebase Hosting |
+| **Hosting** | Netlify |
 | **Original backend** | Express + MongoDB on Cloud Functions (`backend/`), used by the first version of the app |
 
 ### How entries are stored
@@ -65,12 +68,15 @@ Append `?demo` to the URL to load sample data.
 
 ### Deploying
 
+The site is hosted on **Netlify**. `netlify.toml` at the repo root sets the build folder, the Node version and the single-page-app redirect, so connecting the repo is enough. In Netlify, add the environment variable `REACT_APP_USDA_API_KEY`.
+
+Firestore security rules are deployed separately with the Firebase CLI:
+
 ```bash
 npm install -g firebase-tools
 firebase login
 cd frontend/helping-hand
 firebase deploy --only firestore:rules   # once, and whenever the rules change
-npm run deploy                           # builds and deploys hosting
 ```
 
 ## Team
