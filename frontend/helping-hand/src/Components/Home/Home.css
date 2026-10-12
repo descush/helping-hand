@@ -1,0 +1,320 @@
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.hero p {
+    color: var(--text-muted);
+    margin: .5rem 0 0;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem;
+}
+
+.streak-pill {
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .55rem 1rem;
+    border-radius: 999px;
+    background: var(--orange-soft);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform .15s ease;
+}
+
+.streak-pill:hover {
+    transform: translateY(-1px);
+}
+
+.progress-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.progress-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem 1.1rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.progress-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.progress-visual {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.progress-visual .hand-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: none;
+}
+
+.progress-card h3 {
+    font-size: 1.2rem;
+}
+
+.progress-count {
+    margin: .25rem 0 0;
+    color: var(--text-muted);
+}
+
+.progress-count strong {
+    font-size: 1.4rem;
+    color: var(--text);
+}
+
+.progress-hint {
+    margin: .2rem 0 .9rem;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--green-strong);
+}
+
+.quick-add {
+    margin-top: auto;
+    padding: .4rem 1rem;
+    font-size: .88rem;
+}
+
+/* Target reached celebration */
+.progress-card.celebrate {
+    animation: pop .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.burst {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.burst span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px;
+    border-radius: 2px;
+    background: var(--orange);
+    transform: rotate(calc(var(--i) * 36deg)) translateY(0);
+    animation: burst 1s ease-out forwards;
+}
+
+.burst span:nth-child(even) {
+    background: var(--green);
+    border-radius: 50%;
+}
+
+@keyframes burst {
+    0% { opacity: 1; transform: rotate(calc(var(--i) * 36deg)) translateY(0) scale(1); }
+    100% { opacity: 0; transform: rotate(calc(var(--i) * 36deg)) translateY(-80px) scale(.4); }
+}
+
+/* Today's log */
+.log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .25rem;
+}
+
+.log-header h3 {
+    font-size: 1.3rem;
+}
+
+.pill {
+    font-size: .8rem;
+    font-weight: 600;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+    background: var(--green-soft);
+    color: var(--green-strong);
+}
+
+.meal-group + .meal-group {
+    margin-top: .5rem;
+}
+
+.meal-title {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 1rem 0 .1rem;
+}
+
+.log-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.log-list li {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: .7rem 0;
+    border-top: 1px solid var(--border);
+    animation: fade-in .25s ease;
+}
+
+.log-list li:first-child {
+    border-top: none;
+}
+
+.hand-icon.small {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+}
+
+.log-item-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.log-item-name {
+    font-weight: 600;
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.log-item-meta {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    gap: .15rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .15rem;
+}
+
+.stepper span {
+    min-width: 4.5rem;
+    padding: 0 .25rem;
+    white-space: nowrap;
+    text-align: center;
+    font-size: .88rem;
+    font-weight: 600;
+}
+
+.stepper button,
+:root[data-theme="dark"] .stepper button,
+.icon-btn,
+:root[data-theme="dark"] .icon-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.stepper button:hover:not(:disabled),
+.icon-btn:hover:not(:disabled) {
+    background: var(--surface-2);
+    color: var(--text);
+    box-shadow: none;
+}
+
+.icon-btn.delete:hover:not(:disabled) {
+    color: #c2410c;
+    background: var(--orange-soft);
+}
+
+.stepper button:disabled,
+.icon-btn:disabled {
+    opacity: .35;
+    cursor: default;
+}
+
+.log-skeleton {
+    display: grid;
+    gap: .75rem;
+    padding: 1rem 0;
+}
+
+.log-skeleton span {
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .5; }
+}
+
+@media (max-width: 860px) {
+    .progress-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .log-list li {
+        flex-wrap: wrap;
+        gap: .5rem .75rem;
+    }
+
+    .log-item-text {
+        flex-basis: calc(100% - 42px - .75rem);
+    }
+
+    .stepper {
+        margin-left: calc(42px + .75rem);
+    }
+
+    .icon-btn.delete {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .progress-card {
+        padding: 1.25rem .75rem 1rem;
+    }
+
+    .progress-visual .ring-wrap {
+        width: 92px !important;
+        height: 92px !important;
+    }
+}

@@ -1,0 +1,35 @@
+.ring-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring circle {
+    fill: none;
+}
+
+.ring-track {
+    stroke: var(--surface-2);
+}
+
+.ring-fill {
+    stroke: var(--green);
+    stroke-linecap: round;
+    transition: stroke-dashoffset .6s cubic-bezier(.3, .7, .4, 1), stroke .3s ease;
+}
+
+.ring-fill.complete {
+    stroke: var(--orange);
+}
+
+.ring-center {
+    position: absolute;
+    inset: 20%;
+    display: grid;
+    place-items: center;
+}

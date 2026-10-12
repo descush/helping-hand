@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Each user can only read and write their own entries
+    match /users/{userId}/entries/{entryId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 200
+        && request.resource.data.servingAmount is number
+        && request.resource.data.servingAmount > 0
+        && request.resource.data.servingAmount <= 20
+        && request.resource.data.servingType in ['Palm', 'Fist', 'Cupped Handfuls', 'Thumb']
+        && request.resource.data.timestamp is timestamp;
+    }
+
+    // Everything else is closed
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

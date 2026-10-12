@@ -1,35 +1,310 @@
 /* orange accent: #ffa970 */
 /* green accent: #84a46a */
 
+:root {
+  --green: #84a46a;
+  --green-strong: #5f7f47;
+  --green-soft: #eef4e8;
+  --orange: #ffa970;
+  --orange-soft: #fff1e6;
+
+  --bg: #f7f8f4;
+  --surface: #ffffff;
+  --surface-2: #f1f3ed;
+  --text: #212121;
+  --text-muted: #5f6659;
+  --border: #e2e6dc;
+  --shadow: 0 1px 2px rgba(33, 33, 33, .04), 0 4px 16px rgba(33, 33, 33, .06);
+  --shadow-lg: 0 2px 4px rgba(33, 33, 33, .05), 0 12px 32px rgba(33, 33, 33, .10);
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-body: "Hind", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --green: #9cbd80;
+  --green-strong: #b3d197;
+  --green-soft: #26301f;
+  --orange-soft: #3a2a1f;
+
+  --bg: #181a17;
+  --surface: #212421;
+  --surface-2: #2a2e29;
+  --text: #fbfdff;
+  --text-muted: #a9b0a3;
+  --border: #353a33;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, .3), 0 12px 32px rgba(0, 0, 0, .35);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Hind", sans-serif;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+a {
+  color: var(--green-strong);
+}
+
+img {
+  max-width: 100%;
+}
+
+.App {
+  min-height: 100vh;
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  flex-direction: column;
 }
 
-button {
-  position: relative;
-  border-radius: 2px;
-  transition: .4s ease-in;
-  z-index: 1;
+/* Page layout */
+.page {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  animation: fade-in .3s ease;
 }
 
-button:hover {
-  border: 2px solid #84a46a;
-  color: #84a46a;
-  background-color: transparent;
+.page-narrow {
+  max-width: 720px;
 }
 
-
-.App.dark {
-  background-color: #212121;
-  color: #fbfdff;
+.page-header {
+  margin-bottom: 2rem;
 }
 
-.App.light {
-  background-color: #fbfdff;
-  color: #212121;
+.page-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.page-header p {
+  color: var(--text-muted);
+  margin: .5rem 0 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green-strong);
+  margin-bottom: .4rem;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+/* Buttons */
+button,
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: .95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .65rem 1.25rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+button:hover,
+.btn:hover {
+  background: var(--green-strong);
+  box-shadow: 0 4px 12px rgba(95, 127, 71, .25);
+}
+
+:root[data-theme="dark"] button,
+:root[data-theme="dark"] .btn {
+  color: #181a17;
+}
+
+button:active,
+.btn:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.btn-secondary,
+:root[data-theme="dark"] .btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-2);
+  border-color: var(--green);
+  box-shadow: none;
+}
+
+.btn-ghost,
+:root[data-theme="dark"] .btn-ghost {
+  background: transparent;
+  color: var(--green-strong);
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.btn-ghost:hover {
+  background: var(--green-soft);
+  box-shadow: none;
+}
+
+.btn-lg {
+  padding: .85rem 1.6rem;
+  font-size: 1.05rem;
+}
+
+/* Form controls */
+input,
+select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .6rem .85rem;
+  transition: border-color .2s ease;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--green);
+}
+
+label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+/* Hand icon badge: the PNGs have white backgrounds, so they sit on a light tile in both themes */
+.hand-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hand-icon img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2.5rem 1rem;
+}
+
+.empty-state img {
+  width: 72px;
+  opacity: .8;
+  margin-bottom: .5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.hand-icon.large {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+}
+
+.main {
+  flex: 1;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: .6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--green);
+  color: #fff;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

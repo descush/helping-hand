@@ -1,7 +1,9 @@
 export interface FoodEntry {
+    id?: string; // set once the entry is saved
     timestamp: Date;
     fdcId: number;
     description: string;
+    brandOwner?: string; // set on branded foods from the USDA search
     servingAmount?: number;
     servingType?: string;
     foodNutrients?: {

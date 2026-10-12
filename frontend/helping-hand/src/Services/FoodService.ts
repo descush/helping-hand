@@ -3,8 +3,9 @@ import { FoodEntry } from "../Interface/FoodEntry";
 
 // Function to retrieve food data from the USDA API
 export function getFood(searchQuery: string): Promise<any> {
-    const apiKey = "UGxFWbRbmPW0QfYnbAmGna4tH017KBN6NasEtfMu";
-    const url = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${searchQuery}`;
+    // Key comes from .env.local (see .env.example); DEMO_KEY works but is heavily rate limited
+    const apiKey = process.env.REACT_APP_USDA_API_KEY || "DEMO_KEY";
+    const url = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${encodeURIComponent(searchQuery)}&pageSize=24`;
     return axios.get(url).then((response) => {
         const foodResults: FoodEntry[] = response.data.foods; // Assuming the food entries are present in the `foods` property of the API response
         return foodResults;

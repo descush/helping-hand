@@ -1,50 +1,46 @@
 import { Link } from 'react-router-dom';
-import cuppedHand from '../../Assets/cuppedHand.png';
-import fist from '../../Assets/fist.png';
-import palm from '../../Assets/palm.png';
-import thumb from '../../Assets/thumb.png'
+import { categories } from '../../categories';
+import './DailyTargets.css';
 
 
 export function DailyTargets() {
     return (
-        <div>
-            <img src={cuppedHand} alt=""></img>
-            <img src={fist} alt=""></img>
-            <img src={palm} alt=""></img>
-            <img src={thumb} alt=""></img>
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Type</th>
-                    <th>Per Day</th>
-                    <th>Per Meal</th>
-                </tr>
-                <tr>
-                    {/* <td><img src={palm} alt=""></img></td> */}
-                    <td>Protein</td>
-                    <td>6 Palms</td>
-                    <td>1 or 2</td>
-                </tr>
-                <tr>
-                    {/* <td><img src={fist} alt=""></img></td> */}
-                    <td>Veggies</td>
-                    <td>4 - 6 Fists</td>
-                    <td>1 or 2</td>
-                </tr>
-                <tr>
-                    {/* <td><img src={thumb} alt=""></img></td> */}
-                    <td>Fat</td>
-                    <td>3 Thumbs</td>
-                    <td>0 or 1</td>
-                </tr>
-                <tr>
-                    {/* <td><img src={cuppedHand} alt=""></img></td> */}
-                    <td>Carbs</td>
-                    <td>3 Cupped Handfuls</td>
-                    <td>0 or 1</td>
-                </tr>
-            </table>
-            <Link to={'/'}><button>Home</button></Link>
-        </div>
+        <main className='page'>
+            <header className='page-header'>
+                <span className='eyebrow'>Your guide</span>
+                <h2>Daily targets</h2>
+                <p>Your hand is your portion tool. Here's what a balanced day looks like.</p>
+            </header>
+
+            <div className='targets-grid'>
+                {categories.map(category => (
+                    <article className='card target-card' key={category.key}>
+                        <div className='hand-icon large'><img src={category.icon} alt={category.servingType} /></div>
+                        <div>
+                            <span className='eyebrow'>{category.servingType}</span>
+                            <h3>{category.label}</h3>
+                        </div>
+                        <dl className='target-stats'>
+                            <div>
+                                <dt>Per day</dt>
+                                <dd>{category.dailyLabel}</dd>
+                            </div>
+                            <div>
+                                <dt>Per meal</dt>
+                                <dd>{category.perMeal}</dd>
+                            </div>
+                        </dl>
+                    </article>
+                ))}
+            </div>
+
+            <div className='card targets-note'>
+                <p>
+                    These are general starting points. Portions can vary based on your goals, activity level, and hunger.
+                    Some foods count as more than one type, like sweetened yogurt (carb + protein) or chips (carb + fat).
+                </p>
+                <Link to='/add-entry' className='btn'>Start logging</Link>
+            </div>
+        </main>
     )
 }
